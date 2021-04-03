@@ -1,4 +1,4 @@
-# How To install
+# Keylogger using Windows API
 ### Setup C++ environment for Windows 10
 1. First pull the repository onto your computer
 2. Install Visual Studio
