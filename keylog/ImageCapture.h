@@ -61,6 +61,9 @@ HBITMAP GdiPlusScreenCapture(HWND hWnd)
 	// Therefore, GlobalAlloc and LocalAlloc have greater overhead than HeapAlloc.
 	DWORD dwBmpSize = ((width * bi.biBitCount + 31) / 32) * 4 * height;
 	HANDLE hDIB = GlobalAlloc(GHND, dwBmpSize);
+	if (hDIB == 0) {
+		return NULL;
+	}
 	char* lpbitmap = (char*)GlobalLock(hDIB);
 
 	// copy from the window device context to the bitmap device context

