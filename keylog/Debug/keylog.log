@@ -1,0 +1,4 @@
+﻿  keylog.cpp
+C:\Users\Matthew\Desktop\COMP6841\Project\Keylogger\keylog\keylog.cpp(119,95): warning C4554: '^': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\Matthew\Desktop\COMP6841\Project\Keylogger\keylog\keylog.cpp(67): warning C4715: 'MainWindow::HandleMessage': not all control paths return a value
+  keylog.vcxproj -> C:\Users\Matthew\Desktop\COMP6841\Project\Keylogger\Debug\keylog.exe
