@@ -3,3 +3,6 @@ ipch/
 *.opensdf
 Dependencies/include
 Dependencies/libs
+.vs/*
+keylog/keylog.vcxproj
+keylog/keylog.vcxproj.filters

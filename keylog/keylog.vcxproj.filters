@@ -39,9 +39,6 @@
     <ClInclude Include="ftpExfiltrate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SetInterval.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keylog.cpp">

